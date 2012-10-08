@@ -1,0 +1,274 @@
+body {
+	margin: 0;
+	background: #41ABE1;
+	font-size: 14px;
+}
+a {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+
+#header {
+	height: 200px;
+	margin-bottom: 20px;
+	background: lightgreen;
+}
+#body {
+	width: 800px;
+	margin: auto;
+}
+.clear {
+	clear: both;
+}
+hr.separator, span.separator {
+	display: none;
+}
+dl.news {
+	margin: 32px 0;
+}
+dt.admin_avatar {
+	float: left;
+	padding-right: 20px;
+	background: url('../img/a.gif') right no-repeat;
+}
+span.master {
+	font-family: '微软雅黑';
+}
+dd.content {
+	margin-left: 84px;
+	/*
+	box-shadow: 2px 2px 2px black;
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
+	*/
+	padding: 16px;
+	background: white;
+}
+div.picture {
+	text-align: center;
+	padding: 10px;
+}
+div.picture img {
+	border: none;
+}
+p.news {
+	line-height: 1.5em;
+	padding: 16px 0 0 16px;
+	margin: 10px 0;
+	background: url('../img/quote.png') left top no-repeat;
+}
+p.news em {
+	border: 1px dashed lightgray;
+	padding: 10px;
+	display: block;
+	font-style: normal;
+}
+div.bottom {
+	padding-top: 10px;
+	font-size: 12px;
+}
+span.time {
+	display: inline-block;
+	float: left;
+	color: darkcyan;
+}
+em.operate {
+	float: right;
+	font-style: normal;
+}
+em.operate a {
+	color: gray;
+	display: inline-block;
+	height: 16px;
+	padding-left: 20px;
+	margin-left: 10px;
+}
+em.operate a:hover {
+	text-decoration: none;
+	color: darkgray;
+}
+em.operate a.share {
+	background: url('../img/share.png') left no-repeat;
+}
+em.operate a.comment {
+	background: url('../img/comment.png') left no-repeat;
+}
+em.operate a.edit {
+	background: url('../img/edit.png') left no-repeat;
+	color: darkgoldenrod;
+}
+em.operate a.delete {
+	background: url('../img/delete.png') left no-repeat;
+	color: darkred;
+}
+em.operate a.reply {
+	background: url('../img/reply.png') left no-repeat;
+}
+div.more_news {
+	margin-top: -20px;
+}
+div.more {
+	text-align: center;
+}
+div.more a {
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	background: url('../img/arrow.png');
+	text-indent: -9999px;
+}
+div.more a.loading {
+	background: url('../img/wait.png');
+}
+
+div.single {
+	background: white;
+	padding: 20px;
+}
+.single .comment_form textarea {
+	width: 748px;
+}
+div.single dl.comment dd.content {
+	width: 688px;
+}
+p.textarea {
+	margin: 0;
+}
+dt.user_avatar {
+	float: right;
+	padding-left: 16px;
+}
+div.comment dd.content {
+	background: lightcyan;
+	margin: 0;
+	float: left;
+	width: 612px;
+	padding: 12px;
+}
+div.user {
+	text-align: right;
+}
+span.user {
+	color: darkgreen;
+}
+.comment_form {
+	margin-top: 10px;
+}
+.comment_form textarea {
+	width: 672px;
+	height: 100px;
+}
+.comment_form fieldset {
+	padding: 0;
+	margin: 0;
+}
+.comment_form legend {
+	display: none;
+}
+.comment_form div.submit {
+	text-align: right;
+}
+dl.comment {
+	clear: both;
+	padding: 20px 0;
+}
+.comment hr.separator {
+	display: block;
+	clear: both;
+	border: none;
+}
+p.comment {
+	margin: 4px 0 0;
+	font-style: normal;
+	line-height: 1.5em;
+}
+.comment div.bottom {
+	padding: 0;
+}
+
+.info {
+	font-size: 16px;
+	color: white;
+	line-height: 1.5em;
+	padding-left: 35px;
+	font-family: '微软雅黑';
+}
+.info p {
+	margin: 0;
+	padding: 8px;
+}
+.info a {
+	color: white;
+}
+.message {
+	background: url('../img/info.png') 4px center no-repeat darkorange;
+}
+.warning {
+	background: url('../img/warning.png') 4px center no-repeat lightcoral;
+}
+.error_list {
+	background: lightcoral;
+	color: white;
+	line-height: 2em;
+	font-size: 16px;
+	font-family: '微软雅黑';
+	padding: 10px 40px;
+}
+
+.wrap {
+	background: white;
+}
+#login {
+	width: 400px;
+}
+#login fieldset {
+	padding: 20px 100px;
+}
+#login input {
+	width: 200px;
+}
+
+.form {
+	margin: auto;
+}
+fieldset {
+	border: none;
+}
+legend {
+	display: none;
+}
+.textedit {
+	background: white;
+	border: 2px solid #BABABA;
+	padding: 4px;
+	margin: 4px 0;
+	line-height: 1.5em;
+}
+.textedit:focus {
+	border-color: black;
+}
+p.submit {
+	text-align: center;
+}
+label {
+	color: darkslategrey;
+	font-weight: bold;
+}
+textarea {
+	overflow: auto;
+}
+.button {
+	border: none;
+	padding: 4px 16px;
+	text-align: center;
+	background: darkcyan;
+	font-family: '微软雅黑';
+}
+.button:hover {
+	color: white;
+}
+.button:active {
+	color: white;
+	background: black;
+}

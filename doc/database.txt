@@ -1,0 +1,11 @@
+管理员（master）
+id name avatar password limit
+
+新闻（news）
+id master news picture time
+
+使用者（user）
+id name avatar email password
+
+评论（comment）
+id user comment time

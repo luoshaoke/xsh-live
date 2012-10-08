@@ -1,0 +1,307 @@
+body {
+	margin: 0;
+	padding-bottom: 40px;
+}
+label {
+	color: darkgreen;
+	font-size: 14px;
+}
+a {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+br.separator {
+	display: none;
+}
+
+/* header */
+#header {
+	height: 120px;
+	text-align: center;
+	background: url('../img/logo.png') no-repeat top center #272622;
+	border-bottom: 8px solid #266DBB;
+	box-shadow: 0 2px 4px gray;
+	margin-bottom: 40px;
+}
+#header-wrap {
+	width: 680px;
+	height: 100%;
+	position: relative;
+	margin: auto;
+}
+#header h1 {
+	margin: 0;
+	visibility: hidden;
+}
+#nav {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	padding-left: 0;
+	margin: 0;
+	list-style: none;
+}
+#nav li {
+	background-color: #444444;
+	border-radius: 4px 4px 0 0;
+	float: left;
+	margin: 0 2px;
+}
+#nav a {
+	color: #EEEEEE;
+	display: block;
+	font-size: 14px;
+	padding: 10px;
+	text-decoration: none;
+	text-shadow: 1px 1px 1px black;
+}
+#nav li:hover {
+	background-color: #555555;
+}
+#nav .current {
+	background-color: #266DBB;
+}
+#nav .current:hover {
+	background-color: #266DBB;
+}
+
+/* body */
+#body {
+	width: 800px;
+	margin: auto;
+}
+h2.target {
+	display: none;
+}
+
+/* form */
+form.login fieldset, form.new_admin fieldset {
+	width: 200px;
+}
+form.personal fieldset, form.forwards fieldset {
+	width: 240px;
+}
+form.personal input, form.forwards input {
+	width: 240px;
+}
+form.personal p.avatar {
+	text-align: center;
+}
+form.login input, form.new_admin input {
+	width: 200px;
+}
+form.news fieldset, form.edit fieldset {
+	width: 400px;
+}
+form.news textarea, form.edit textarea {
+	width: 400px;
+	height: 80px;
+	line-height: 1.5em;
+	font-size: 14px;
+}
+
+/* table */
+#user_table {
+	width: 600px;
+	margin: auto;
+}
+#admin_table {
+	width: 400px;
+	margin: auto;
+}
+.table {
+	box-shadow: 0 0 10px gray;
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='gray');
+}
+.table td {
+	padding: 4px 8px;
+	font-size: 12px;
+	line-height: 1.2em;
+	color: #222;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+.table tr {
+	background: #EEFFEE;
+}
+tr.theader {
+	font-size: 14px;
+	font-weight: bold;
+	background: url('../img/btn-overlay.png') #2A7AD2;
+	color: white;
+	line-height: 1;
+}
+.theader th {
+	padding: 10px;
+}
+.table .time {
+	width: 132px;
+	text-align: center;
+	color: darkgreen;
+}
+.operate {
+	width: 72px;
+	text-align: center;
+}
+.table td.hover {
+	background: #C4FFC4;
+}
+td.master {
+	min-width: 56px;
+}
+td.news {
+	width: 400px;
+}
+td.comment {
+	width: 460px;
+}
+td.picture {
+	min-width: 40px;
+	text-align: center;
+}
+a.edit, a.email {
+	color: darkgoldenrod;
+}
+a.delete, a.gag {
+	color: darkred;
+}
+a.ungag {
+	color: darkgreen;
+}
+a.picture, a.avatar {
+	color: darkcyan;
+}
+td.diff {
+	background: #DDFFDD;
+}
+td.right {
+	text-align: right;
+}
+td.center {
+	text-align: center;
+}
+
+
+/* admin */
+#admin_wrap {
+	width: 600px;
+	margin: auto;
+}
+dl.admin dd {
+	display: inline-block;
+	padding: 20px;
+	margin: 0;
+}
+dl.admin p.name {
+	margin: 0;
+	font-size: 14px;
+	text-align: center;
+	color: darkgoldenrod;
+}
+div.new_admin {
+	font-size: 14px;
+	background: url(../img/new.png) left center no-repeat;
+	padding-left: 20px;
+}
+.new_admin a {
+	color: darkcyan;
+}
+
+/* common */
+legend {
+	color: darkgoldenrod;
+	font-weight: bold;
+}
+form fieldset {
+	margin: auto;
+	padding: 0 20px;
+	border-radius: 10px;
+}
+form input, form textarea {
+	margin: 4px 0;
+}
+.textedit {
+	border: 1px solid gray;
+	padding: 4px;
+}
+.textedit:hover, .textedit:focus {
+	box-shadow: 0 0 8px gray;
+}
+.button {
+	background: url("../img/btn-overlay.png") repeat #6AB620;
+	border: 1px solid #6AB620;
+	border-radius: 8px 8px 8px 8px;
+	color: white;
+	font-size: 14px;
+	height: 32px;
+	padding: 0 12px;
+	text-shadow: 0 1px 1px black;
+}
+.button:active {
+	background: url("../img/anti-btn-overlay.png") repeat #6AB620;
+}
+.button:hover {
+	box-shadow: 0 0 4px gray;
+}
+.info {
+	padding-left: 24px;
+}
+.info p {
+	margin: 8px;
+	font-size: 14px;
+	text-shadow: 0 1px 0 white;
+}
+.warning {
+	background: url("../img/exclamation.png") no-repeat 8px center #FFD1D1;
+	border-bottom: 1px solid #F8ACAC;
+	border-top: 1px solid #F8ACAC;
+}
+.message {
+	background: url("../img/information.png") no-repeat 8px center #E8F6FF;
+	border-bottom: 1px solid #B8E2FB;
+	border-top: 1px solid #B8E2FB;
+}
+.message p {
+	color: darkgreen;
+}
+.message a.name {
+	color: black;
+}
+.message a.logout {
+	color: #329ECC;
+}
+.danger {
+	color: darkred;
+}
+img.avatar {
+	background: url('../img/transparent.png');
+	box-shadow: 0 0 8px gray;
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=135, Color='gray');
+}
+div.submit {
+	text-align: center;
+	margin-bottom: 16px;
+}
+.paging {
+	text-align: center;
+	font-size: 14px;
+}
+.paging a {
+	color: darkcyan;
+}
+.paging a:hover {
+	text-decoration: none;
+}
+.paging a.invalid {
+	color: black;
+	cursor: default;
+}
+.paging a.current {
+	color: darkred;
+	font-weight: bold;
+}
