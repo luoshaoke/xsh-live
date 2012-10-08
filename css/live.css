@@ -219,14 +219,21 @@ p.comment {
 .wrap {
 	background: white;
 }
-#login {
-	width: 400px;
+#login, #register {
+	width: 600px;
 }
-#login fieldset {
-	padding: 20px 100px;
+#login fieldset, #register fieldset {
+	padding: 20px 80px;
 }
-#login input {
+#login input, #register input {
 	width: 200px;
+}
+#login p.submit, #register p.submit {
+	width: 200px;
+}
+#login span.info, #register span.info {
+	color: gray;
+	padding: 0 20px;
 }
 
 .form {

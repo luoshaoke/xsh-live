@@ -131,4 +131,140 @@ $(document).ready(function(){
 
 		return num;
 	}
+
+
+	// 验证登陆注删表单
+	(function (){
+
+		// 检查输入是不是正确
+		var check_bool = {
+			email: false,
+			name: false,
+			password: false,
+			password_again: false
+		};
+		// 验证方式
+		var check_way = {
+			email: function(){
+				return $('#email').val().search(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.com$/g) == -1;
+			},
+			name: function(){
+				var has_name;
+				$.ajax({
+					url: 'api.php?intent=has_name',
+					type: 'POST',
+					data: {name: $('#name').val()},
+					async: false,
+					success: function(data){
+						has_name = (data == 'had');
+					}
+				});
+				return has_name;
+			},
+			password: function(){
+				return $('#password').val().length <= 3
+			},
+			password_again: function(){
+				return $('#password').val() != $('#password_again').val();
+			}
+		};
+
+		// 验证邮箱
+		check_error('email', '请输入正确的邮箱!', check_way.email);
+
+		// 验证昵称
+		check_error('name', '昵称已存在!', check_way.name);
+
+		// 验证密码
+		check_error('password', '密码过短', check_way.password);
+
+		// 验证第二次密码
+		check_error('password_again', '两次密码不相同!', check_way.password_again);
+
+		// 验证绑定
+		function check_error(input_name, addContent, check)
+		{
+			var $input_node = $('#' + input_name);
+
+			$input_node.blur(function(){
+				show_check(input_name, check);
+			});
+			$input_node.focus(function(){
+				hide_check(input_name);
+			});
+			$input_node.after(
+				'<span class="empty info" >' +
+					'不能为空' + 
+				'</span>' +
+				'<span class="error info" >' +
+					addContent + 
+				'</span>' +
+				'<span class="right info" >' +
+					'<img src="img/right.png">' +
+				'</span>'
+			);
+			hide_check(input_name);
+		}
+		
+		// 显示隐藏验证
+		function show_check(input_name, check){
+			var $input_node = $('#' + input_name);
+			if ($input_node.val() == '')
+			{
+				$('p.' + input_name + ' .empty').show();
+				eval('check_bool.' + input_name + ' = false');
+			}
+			else if (check())
+			{
+				$('p.' + input_name + ' .error').show();
+				eval('check_bool.' + input_name + ' = false');
+			}
+			else
+			{
+				$('p.' + input_name + ' .right').show();
+				eval('check_bool.' + input_name + ' = true');
+			}
+		}
+		function hide_check(input_name)
+		{
+			$('p.' + input_name + ' .error').hide();
+			$('p.' + input_name + ' .empty').hide();
+			$('p.' + input_name + ' .right').hide();
+		}
+
+		
+		// 提交表单事件控制
+		$('#login').submit(function(){
+			if (check_bool.eamil && check_bool.password)
+			{
+				return true;
+			}
+			else
+			{
+				show_check('email', check_way.email);
+				show_check('password', check_way.password);
+				return false;
+			}
+		});
+		$('#register').submit(function(){
+			if (
+				check_bool.eamil &&
+				check_bool.name &&
+				check_bool.password &&
+				check_bool.password_again
+			)
+			{
+				return true;
+			}
+			else
+			{
+				show_check('email', check_way.email);
+				show_check('name', check_way.name);
+				show_check('password', check_way.password);
+				show_check('password_again', check_way.password_again);
+				return false;
+			}
+		});
+
+	})();
 });
