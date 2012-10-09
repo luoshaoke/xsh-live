@@ -1,6 +1,6 @@
 body {
 	margin: 0;
-	background: #41ABE1;
+	background: green;
 	font-size: 14px;
 }
 a {
@@ -11,7 +11,6 @@ a:hover {
 }
 
 #header {
-	height: 200px;
 	margin-bottom: 20px;
 	background: lightgreen;
 }
@@ -38,10 +37,6 @@ span.master {
 }
 dd.content {
 	margin-left: 84px;
-	/*
-	box-shadow: 2px 2px 2px black;
-	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
-	*/
 	padding: 16px;
 	background: white;
 }
@@ -202,13 +197,13 @@ p.comment {
 	color: white;
 }
 .message {
-	background: url('../img/info.png') 4px center no-repeat darkorange;
+	background: url('../img/info.png') 4px center no-repeat darkcyan;
 }
 .warning {
-	background: url('../img/warning.png') 4px center no-repeat lightcoral;
+	background: url('../img/warning.png') 4px center no-repeat darkorange;
 }
 .error_list {
-	background: lightcoral;
+	background: darkorange;
 	color: white;
 	line-height: 2em;
 	font-size: 16px;
@@ -228,7 +223,35 @@ p.comment {
 #login input {
 	width: 200px;
 }
-
+form.register {
+	width: 240px;
+	padding: 0 20px 0 60px;
+	background: white;
+}
+form.register input {
+	width: 166px;
+}
+form.register button {
+	position: relative;
+	left: -20px;
+}
+form.register span.error {
+	display: block;
+	width: 150px;
+	color: white;
+	background: url('../img/warning_min.png') left center no-repeat darkorange;
+	font-size: 12px;
+	padding: 4px 4px 4px 24px;
+	margin: 0;
+}
+form.register span.ok {
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	background: url(../img/ok.png) center;
+	position: relative;
+	top: 6px;
+}
 .form {
 	margin: auto;
 }
@@ -264,11 +287,11 @@ textarea {
 	text-align: center;
 	background: darkcyan;
 	font-family: '微软雅黑';
+	color: white;
 }
 .button:hover {
-	color: white;
+	background: lightseagreen;
 }
 .button:active {
-	color: white;
 	background: black;
 }
