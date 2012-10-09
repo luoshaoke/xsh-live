@@ -133,7 +133,7 @@ $(document).ready(function(){
 	}
 
 
-	// 验证登陆注删表单
+	// 验证登陆注册表单
 	(function (){
 
 		// 检查输入是不是正确
@@ -143,10 +143,11 @@ $(document).ready(function(){
 			password: false,
 			password_again: false
 		};
+
 		// 验证方式
 		var check_way = {
 			email: function(){
-				return $('#email').val().search(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.com$/g) == -1;
+				return $('#email').val().search(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]{2,3}$/g) == -1;
 			},
 			name: function(){
 				var has_name;
@@ -206,7 +207,7 @@ $(document).ready(function(){
 			hide_check(input_name);
 		}
 		
-		// 显示隐藏验证
+		// 显示验证
 		function show_check(input_name, check){
 			var $input_node = $('#' + input_name);
 			if ($input_node.val() == '')
@@ -225,6 +226,7 @@ $(document).ready(function(){
 				eval('check_bool.' + input_name + ' = true');
 			}
 		}
+		// 隐藏验证
 		function hide_check(input_name)
 		{
 			$('p.' + input_name + ' .error').hide();
