@@ -56,8 +56,13 @@ a.up {
 a.down {
 	background-image: url('../img/down_circular.png');
 }
+a.top {
+	background-image: url('../img/home.png');
+}
 #toolbar .right {
-	float: right;
+	position: absolute;
+	right: 0;
+	top: 0;
 }
 #toolbar .personal {
 	cursor: pointer;
@@ -365,6 +370,12 @@ textarea {
 	background: darkcyan;
 	font-family: '微软雅黑';
 	color: white;
+}
+button.invalid {
+	background: gray;
+}
+button.invalid:hover {
+	background: gray;
 }
 .button:hover {
 	background: lightseagreen;
