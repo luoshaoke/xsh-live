@@ -11,22 +11,6 @@
 	</head>
 	<body>
 		<div id="header"></div>
-		<div id="toolbar">
-			<div class="center">
-				<a href="#" class="up">上一条</a>
-				<a href="#" class="top">返回顶部</a>
-				<a href="#" class="down">下一条</a>
-			</div>
-			<div class="right">
-				<div class="personal">
-					<img src="img/avatar/default.png" class="avatar" alt="我的头像" title="我的头像" />
-					<div class="name">昵称</div>
-				</div>
-				<p class="setting">
-					<a href="?intent=live&amp;target=setting" id="setting">设置</a>
-				</p>
-			</div>
-		</div>
 		<div id="body">
 			<?php include "$view.php";?>
 		</div>

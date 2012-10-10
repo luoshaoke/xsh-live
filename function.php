@@ -170,13 +170,7 @@ function set_admin_name($id, $name)
 {
 	if ($name != '')
 	{
-		$result = result(query("
-			SELECT live_user.id, live_admin.id
-			FROM live_user, live_admin
-			WHERE live_user.name = '{$name}' OR live_admin.name = '{$name}'
-		"));
-
-		if (isset($result[0]))
+		if (has_name($name))
 		{
 			throw new Exception("名称“{$name}”已被使用");
 		}
@@ -528,6 +522,17 @@ function send_comment($comment, $follow)
 			)
 		");
 	}
+}
+
+function has_name($name)
+{
+	$result = result(query("
+		SELECT live_user.id, live_admin.id
+		FROM live_user, live_admin
+		WHERE live_user.name = '{$name}' OR live_admin.name = '{$name}'
+	"));
+
+	return isset($result[0]);
 }
 
 ?>

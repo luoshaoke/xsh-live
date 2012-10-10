@@ -56,13 +56,8 @@ a.up {
 a.down {
 	background-image: url('../img/down_circular.png');
 }
-a.top {
-	background-image: url('../img/home.png');
-}
 #toolbar .right {
-	position: absolute;
-	right: 0;
-	top: 0;
+	float: right;
 }
 #toolbar .personal {
 	cursor: pointer;

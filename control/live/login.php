@@ -16,44 +16,31 @@ else if (isset($_POST['email']) && isset($_POST['password']))
 	$email = $_POST['email'];
 	$password = $_POST['password'];
 
-	if ($email == '')
+	// 根据邮箱查询数据库
+	$result = result(query("
+		SELECT id, name, password, email 
+		FROM live_user
+		WHERE email='{$email}'
+	"));
+
+	if (!isset($result[0]))
 	{
-		$warning = '请输入邮箱';
+		$warning = '邮箱不存在';
 		view('warning');
 	}
-	else if ($password == '')
+	else if ($result[0]['password'] != $password)
 	{
-		$warning = '请输入密码';
+		$warning = '密码错误';
 		view('warning');
 	}
 	else
 	{
-		// 根据邮箱查询数据库
-		$result = result(query("
-			SELECT id, name, password, email 
-			FROM live_user
-			WHERE email='{$email}'
-		"));
+		// 注册会话变量
+		$_SESSION['user_name'] = $result[0]['name'];
+		$_SESSION['user_id'] = $result[0]['id'];
 
-		if (!isset($result[0]))
-		{
-			$warning = "邮箱“{$email}”不存在";
-			view('warning');
-		}
-		else if ($result[0]['password'] != $password)
-		{
-			$warning = '密码错误';
-			view('warning');
-		}
-		else
-		{
-			// 注册会话变量
-			$_SESSION['user_name'] = $result[0]['name'];
-			$_SESSION['user_id'] = $result[0]['id'];
-
-			$message = "登录成功";
-			view('message');
-		}
+		$message = "登录成功";
+		view('message');
 	}
 }
 else

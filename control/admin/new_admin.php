@@ -20,17 +20,9 @@ if (admin_logined())
 		}
 		else
 		{
-			$result = result(query("
-				SELECT live_user.id, live_admin.id
-				FROM live_user, live_admin
-				WHERE
-					live_user.name = '{$name}' OR
-					live_admin.name = '{$name}'
-			"));
-
-			if (isset($result[0]))
+			if (has_name($name))
 			{
-				array_push($error_msg, "名称“{$name}”已被使用");
+				array_push($error_msg, '您输入的昵称已存在');
 				$flag = false;
 			}
 		}
