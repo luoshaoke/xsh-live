@@ -9,7 +9,92 @@ a {
 a:hover {
 	text-decoration: underline;
 }
+.hide {
+	display: none;
+}
+.clear {
+	clear: both;
+}
+.left {
+	float: left;
+}
+.right {
+	float: right;
+}
+.center {
+	text-align: center;
+}
 
+#footer {
+	height: 40px;
+}
+#toolbar {
+	z-index: 999;
+	width: 100%;
+	height: 40px;
+	position: fixed;
+	bottom: 0;
+	background: darkorange;
+	color: white;
+	font-family: '微软雅黑';
+	text-align: center;
+}
+#toolbar .center {
+	display: inline-block;
+}
+#toolbar .center a {
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	background-position: center;
+	background-repeat: no-repeat;
+	text-indent: -9999px;
+}
+a.up {
+	background-image: url('../img/up_circular.png');
+}
+a.down {
+	background-image: url('../img/down_circular.png');
+}
+a.top {
+	background-image: url('../img/home.png');
+}
+#toolbar .right {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+#toolbar .personal {
+	cursor: pointer;
+	float: left;
+}
+#toolbar .setting:hover, #toolbar .personal:hover {
+	background: orange;
+}
+#toolbar .setting {
+	display: inline-block;
+	margin: 0;
+}
+#setting {
+	background: url('../img/setting.png') center no-repeat;
+	text-indent: -9999px;
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+}
+#toolbar div.name {
+	display: inline-block;
+	padding-right: 8px;
+	line-height: 40px;
+	height: 40px;
+}
+#toolbar img.avatar {
+	float: left;
+	width: 24px;
+	height: 24px;
+	margin: 8px;
+	background: white;
+}
 #header {
 	margin-bottom: 20px;
 	background: lightgreen;
@@ -17,9 +102,6 @@ a:hover {
 #body {
 	width: 800px;
 	margin: auto;
-}
-.clear {
-	clear: both;
 }
 hr.separator, span.separator {
 	display: none;
