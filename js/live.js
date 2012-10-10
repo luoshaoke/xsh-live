@@ -189,22 +189,31 @@ $(document).ready(function(){
 
 			$input_node.blur(function(){
 				show_check(input_name, check);
+				if (
+					check_bool.email &&
+					check_bool.name &&
+					check_bool.password &&
+					check_bool.password_again
+				)
+				{
+					$("#submit").removeClass("invalid");
+				}
+				else {
+					$("#submit").addClass("invalid");
+				}
 			});
 			$input_node.focus(function(){
 				hide_check(input_name);
 			});
 			$input_node.after(
-				'<span class="empty info" >' +
-					'不能为空' + 
-				'</span>' +
-				'<span class="error info" >' +
+				'<span class="error" >' +
 					addContent + 
 				'</span>' +
-				'<span class="right info" >' +
-					'<img src="img/right.png">' +
+				'<span class="ok" >' +
 				'</span>'
 			);
 			hide_check(input_name);
+			$("#submit").addClass("invalid");
 		}
 		
 		// 显示验证
@@ -212,7 +221,6 @@ $(document).ready(function(){
 			var $input_node = $('#' + input_name);
 			if ($input_node.val() == '')
 			{
-				$('p.' + input_name + ' .empty').show();
 				eval('check_bool.' + input_name + ' = false');
 			}
 			else if (check())
@@ -222,7 +230,7 @@ $(document).ready(function(){
 			}
 			else
 			{
-				$('p.' + input_name + ' .right').show();
+				$('p.' + input_name + ' .ok').show();
 				eval('check_bool.' + input_name + ' = true');
 			}
 		}
@@ -230,27 +238,14 @@ $(document).ready(function(){
 		function hide_check(input_name)
 		{
 			$('p.' + input_name + ' .error').hide();
-			$('p.' + input_name + ' .empty').hide();
-			$('p.' + input_name + ' .right').hide();
+			$('p.' + input_name + ' .ok').hide();
 		}
 
 		
 		// 提交表单事件控制
-		$('#login').submit(function(){
-			if (check_bool.eamil && check_bool.password)
-			{
-				return true;
-			}
-			else
-			{
-				show_check('email', check_way.email);
-				show_check('password', check_way.password);
-				return false;
-			}
-		});
-		$('#register').submit(function(){
+		$('#register_form').submit(function(){
 			if (
-				check_bool.eamil &&
+				check_bool.email &&
 				check_bool.name &&
 				check_bool.password &&
 				check_bool.password_again

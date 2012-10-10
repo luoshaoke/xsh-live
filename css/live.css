@@ -1,6 +1,6 @@
 body {
 	margin: 0;
-	background: #41ABE1;
+	background: green;
 	font-size: 14px;
 }
 a {
@@ -9,18 +9,94 @@ a {
 a:hover {
 	text-decoration: underline;
 }
+.hide {
+	display: none;
+}
+.clear {
+	clear: both;
+}
+.left {
+	float: left;
+}
+.right {
+	float: right;
+}
+.center {
+	text-align: center;
+}
 
+#footer {
+	height: 40px;
+}
+#toolbar {
+	z-index: 999;
+	width: 100%;
+	height: 40px;
+	position: fixed;
+	bottom: 0;
+	background: darkorange;
+	color: white;
+	font-family: '微软雅黑';
+	text-align: center;
+}
+#toolbar .center {
+	display: inline-block;
+}
+#toolbar .center a {
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	background-position: center;
+	background-repeat: no-repeat;
+	text-indent: -9999px;
+}
+a.up {
+	background-image: url('../img/up_circular.png');
+}
+a.down {
+	background-image: url('../img/down_circular.png');
+}
+#toolbar .right {
+	float: right;
+}
+#toolbar .personal {
+	cursor: pointer;
+	float: left;
+}
+#toolbar .setting:hover, #toolbar .personal:hover {
+	background: orange;
+}
+#toolbar .setting {
+	display: inline-block;
+	margin: 0;
+}
+#setting {
+	background: url('../img/setting.png') center no-repeat;
+	text-indent: -9999px;
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+}
+#toolbar div.name {
+	display: inline-block;
+	padding-right: 8px;
+	line-height: 40px;
+	height: 40px;
+}
+#toolbar img.avatar {
+	float: left;
+	width: 24px;
+	height: 24px;
+	margin: 8px;
+	background: white;
+}
 #header {
-	height: 200px;
 	margin-bottom: 20px;
 	background: lightgreen;
 }
 #body {
 	width: 800px;
 	margin: auto;
-}
-.clear {
-	clear: both;
 }
 hr.separator, span.separator {
 	display: none;
@@ -38,10 +114,6 @@ span.master {
 }
 dd.content {
 	margin-left: 84px;
-	/*
-	box-shadow: 2px 2px 2px black;
-	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
-	*/
 	padding: 16px;
 	background: white;
 }
@@ -202,13 +274,13 @@ p.comment {
 	color: white;
 }
 .message {
-	background: url('../img/info.png') 4px center no-repeat darkorange;
+	background: url('../img/info.png') 4px center no-repeat darkcyan;
 }
 .warning {
-	background: url('../img/warning.png') 4px center no-repeat lightcoral;
+	background: url('../img/warning.png') 4px center no-repeat darkorange;
 }
 .error_list {
-	background: lightcoral;
+	background: darkorange;
 	color: white;
 	line-height: 2em;
 	font-size: 16px;
@@ -219,23 +291,44 @@ p.comment {
 .wrap {
 	background: white;
 }
-#login, #register {
-	width: 600px;
+#login {
+	width: 400px;
 }
-#login fieldset, #register fieldset {
-	padding: 20px 80px;
+#login fieldset {
+	padding: 20px 100px;
 }
-#login input, #register input {
+#login input {
 	width: 200px;
 }
-#login p.submit, #register p.submit {
-	width: 200px;
+form.register {
+	width: 240px;
+	padding: 0 20px 0 60px;
+	background: white;
 }
-#login span.info, #register span.info {
-	color: gray;
-	padding: 0 20px;
+form.register input {
+	width: 166px;
 }
-
+form.register button {
+	position: relative;
+	left: -20px;
+}
+form.register span.error {
+	display: block;
+	width: 150px;
+	color: white;
+	background: url('../img/warning_min.png') left center no-repeat darkorange;
+	font-size: 12px;
+	padding: 4px 4px 4px 24px;
+	margin: 0;
+}
+form.register span.ok {
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	background: url(../img/ok.png) center;
+	position: relative;
+	top: 6px;
+}
 .form {
 	margin: auto;
 }
@@ -271,11 +364,11 @@ textarea {
 	text-align: center;
 	background: darkcyan;
 	font-family: '微软雅黑';
+	color: white;
 }
 .button:hover {
-	color: white;
+	background: lightseagreen;
 }
 .button:active {
-	color: white;
 	background: black;
 }
