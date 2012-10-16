@@ -39,8 +39,27 @@ a:hover {
 	font-family: '微软雅黑';
 	text-align: center;
 }
-#toolbar .center {
+#toolbar p {
+	margin: 0;
+}
+#toolbar h1.title {
+	cursor: default;
 	display: inline-block;
+	line-height: 40px;
+	font-size: 18px;
+	margin: 0;
+	padding-left: 8px;
+}
+#toolbar .detail {
+	display: inline-block;
+}
+#toolbar .left {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+#toolbar .center {
+	display: none;
 }
 #toolbar .center a {
 	display: inline-block;
@@ -68,8 +87,8 @@ a.top {
 	cursor: pointer;
 	float: left;
 }
-#toolbar .setting:hover, #toolbar .personal:hover {
-	background: orange;
+#toolbar a:hover, #toolbar .personal:hover {
+	background-color: orange;
 }
 #toolbar .setting {
 	display: inline-block;
@@ -95,9 +114,30 @@ a.top {
 	margin: 8px;
 	background: white;
 }
+#toolbar .menu {
+	position: relative;
+	height: 28px;
+	bottom: 78px;
+	display: none;
+	border-top: 2px solid darkorange;
+	border-left: 2px solid darkorange;
+	border-right: 2px solid darkorange;
+	background-color: white;
+	padding: 4px 0;
+}
+#toolbar .menu a {
+	color: black;
+	line-height: 2em;
+	display: block;
+}
+#toolbar .menu a:hover {
+	text-decoration: none;
+	background-color: silver;
+}
+
 #header {
 	margin-bottom: 20px;
-	background: lightgreen;
+	background-color: lightgreen;
 }
 #body {
 	width: 800px;

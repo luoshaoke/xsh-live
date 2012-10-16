@@ -264,4 +264,13 @@ $(document).ready(function(){
 		});
 
 	})();
+
+
+	// 弹出、隐藏，登录、注销
+	$('div.personal').click(function(){
+		$('.login_and_logout').toggle();
+	});
+
+	// 翻页
+	$('#toolbar .center').css('display', 'inline-block');
 });

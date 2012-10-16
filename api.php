@@ -122,11 +122,14 @@ switch ($intent)
 	}
 
 	case 'has_name':
+	{
 		if (has_name($_POST['name']))
 		{
 			echo 'had';
 		}
+
 		break;
+	}
 }
 
 ?>
