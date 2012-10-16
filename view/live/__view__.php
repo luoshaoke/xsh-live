@@ -18,9 +18,9 @@
 			</div>
 			<div class="center">
 				<p>
-					<a href="#" class="up" title="上一条">上一条</a>
-					<a href="#" class="top" title="返回顶部">返回顶部</a>
-					<a href="#" class="down" title="下一条">下一条</a>
+					<a href="#" class="up" id="btn_up" title="上一条">上一条</a>
+					<a href="#" class="top" id="btn_top" title="返回顶部">返回顶部</a>
+					<a href="#" class="down" id="btn_down" title="下一条">下一条</a>
 				</p>
 			</div>
 			<div class="right">
