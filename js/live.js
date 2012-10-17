@@ -44,7 +44,7 @@ $(document).ready(function(){
 		var id = parseInt($this.attr('id'));
 		var $comment;
 
-		$this.click(function(){
+		$this.click(function() {
 			
 			if ($this.hasClass('loaded'))
 			{
@@ -95,7 +95,7 @@ $(document).ready(function(){
 					$.post(
 						'api.php?intent=send_comment&follow=' + id,
 						{comment: $comment_input.val()},
-						function(data){
+						function(data) {
 							if (data == '')
 							{
 								alert('评论成功');
@@ -273,4 +273,115 @@ $(document).ready(function(){
 
 	// 翻页
 	$('#toolbar .center').css('display', 'inline-block');
+
+	// 控制按钮，上下翻页，回到首页
+	(function(){
+		var up = -1;
+		var down = 1;
+		var max = 0;
+		var $news;
+		var news_height;
+		var isUserScroll = true;
+
+		// 初始化每个新闻的大小
+		function init()
+		{
+			news_height = [];
+			$news = $('#body > .news');
+			$news.each(function(){
+				news_height.push($(this).height() + parseInt($(this).css('margin-top')));
+			});
+			var sum = $(document).height() - $("#body > .news:last").offset().top;
+			var i = $news.length - 2;
+			while (i >= 0)
+			{
+				if (sum > $(window).height())
+				{
+					max = i + 2;
+					break;
+				}
+				sum += news_height[i--];
+			}
+		}
+		init();
+
+		// 按钮点击事件
+		$('#btn_down').click(function(){
+			resize();
+			isUserScroll = false;
+			if (down <= max) goto_news(down);
+			return false;
+		});
+		$('#btn_up').click(function(){
+			resize();
+			isUserScroll = false;
+			if (up <= 0) goto_news('top');
+			else goto_news(up);
+			return false;
+		});
+		$('#btn_top').click(function(){
+			num = 0;
+			goto_news('top');
+		});
+
+		// 跳到第几条新闻
+		function goto_news(num)
+		{
+			$body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
+			options = {
+				speed: 'slow',
+				easing: 'easeOutExpo',
+				queue: false,
+			};
+			if(typeof num == 'number'){
+				$body.animate({scrollTop: $("#body > .news:eq(" + num + ")").offset().top}, options);
+			}
+			else {
+				switch (num)
+				{
+					case 'top':
+						$body.animate({scrollTop: 0}, options);
+						break;
+					case 'bottom':
+						$body.animate({scrollTop: $(document).height()}, options);
+						break;
+				}
+			}
+		}
+
+		// 窗口滚动事件
+		$(window).scroll(function() {
+			var i = 0;
+			var height = $(window).scrollTop();
+			while (i < $news.length)
+			{
+				if (height <= $("#body > .news:eq(" + i + ")").offset().top)
+				{
+					down = i + 1;
+					up = i - 1;
+					break;
+				}
+				i++;
+			}
+		});
+
+		var document_height = $(document).height();
+
+		function resize(){
+			if ($(document).height() != document_height) {
+				init();
+				document_height = $(document).height();
+			}
+		};
+	})();
 });
+
+// 阻尼动画切换效果
+$.extend(
+	$.easing, {
+		easeOutExpo: function (x, t, b, c, d) {
+			return (t==d) ? b+c : c * (-Math.pow(2, -10 * t/d) + 1) + b;
+		}
+	}
+);
+
