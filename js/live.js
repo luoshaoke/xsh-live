@@ -355,9 +355,16 @@ $(document).ready(function(){
 			var height = $(window).scrollTop();
 			while (i < $news.length)
 			{
-				if (height <= $("#body > .news:eq(" + i + ")").offset().top)
+				if (height == $("#body > .news:eq(" + i + ")").offset().top)
 				{
 					down = i + 1;
+					up = i - 1;
+					break;
+				}
+				
+				if (height < $("#body > .news:eq(" + i + ")").offset().top)
+				{
+					down = i;
 					up = i - 1;
 					break;
 				}
