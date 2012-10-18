@@ -276,110 +276,59 @@ $(document).ready(function(){
 
 	// 控制按钮，上下翻页，回到首页
 	(function(){
-		var up = -1;
-		var down = 1;
-		var max = 0;
-		var $news;
-		var news_height;
-		var isUserScroll = true;
-
-		// 初始化每个新闻的大小
-		function init()
-		{
-			news_height = [];
-			$news = $('#body > .news');
-			$news.each(function(){
-				news_height.push($(this).height() + parseInt($(this).css('margin-top')));
-			});
-			var sum = $(document).height() - $("#body > .news:last").offset().top;
-			var i = $news.length - 2;
-			while (i >= 0)
-			{
-				if (sum > $(window).height())
-				{
-					max = i + 2;
-					break;
-				}
-				sum += news_height[i--];
-			}
-		}
-		init();
-
 		// 按钮点击事件
 		$('#btn_down').click(function(){
-			resize();
-			isUserScroll = false;
-			if (down <= max) goto_news(down);
+			goto_news('down');
 			return false;
 		});
 		$('#btn_up').click(function(){
-			resize();
-			isUserScroll = false;
-			if (up <= 0) goto_news('top');
-			else goto_news(up);
+			goto_news('up');
 			return false;
 		});
 		$('#btn_top').click(function(){
-			num = 0;
 			goto_news('top');
+			return false;
 		});
 
-		// 跳到第几条新闻
-		function goto_news(num)
+		// 跳转新闻
+		function goto_news(arg)
 		{
 			$body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
+			var scrollTop = $(window).scrollTop();
 			options = {
 				speed: 'slow',
 				easing: 'easeOutExpo',
-				queue: false,
+				queue: false
 			};
-			if(typeof num == 'number'){
-				$body.animate({scrollTop: $("#body > .news:eq(" + num + ")").offset().top}, options);
-			}
-			else {
-				switch (num)
-				{
-					case 'top':
-						$body.animate({scrollTop: 0}, options);
-						break;
-					case 'bottom':
-						$body.animate({scrollTop: $(document).height()}, options);
-						break;
-				}
-			}
-		}
-
-		// 窗口滚动事件
-		$(window).scroll(function() {
 			var i = 0;
-			var height = $(window).scrollTop();
-			while (i < $news.length)
+			var diff = 20;
+			for (; i < $('#body > .news').length; i++)
 			{
-				if (height == $("#body > .news:eq(" + i + ")").offset().top)
-				{
-					down = i + 1;
-					up = i - 1;
+				var i_top = $("#body > .news:eq(" + i + ")").offset().top;
+				if (i_top - scrollTop >= diff) {
+					if (arg != 'up') i--;
 					break;
 				}
-				
-				if (height < $("#body > .news:eq(" + i + ")").offset().top)
-				{
-					down = i;
-					up = i - 1;
+				if (i_top - scrollTop < diff && i_top - scrollTop > - diff) break;
+			}
+			if (i == -1) i = 0;
+			switch (arg)
+			{
+				case 'up': 
+					i = (i == 0 || i == 1) ? 0 : $("#body > .news:eq(" + (i - 1) + ")").offset().top;
 					break;
-				}
-				i++;
+				case 'down':
+					i = $("#body > .news:eq(" + (i + 1) + ")").offset().top;
+					break;
+				case 'top':
+					i = 0;
+					break;
+				case 'bottom':
+					i = $(document).height();
+					break;
 			}
-		});
-
-		var document_height = $(document).height();
-
-		function resize(){
-			if ($(document).height() != document_height) {
-				init();
-				document_height = $(document).height();
-			}
-		};
+			$body.animate({scrollTop: i}, options);
+		}
 	})();
 });
 
