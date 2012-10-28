@@ -48,6 +48,7 @@ function default_view()
 function name_modify()
 {
 	$name = $_POST['name'];
+
 	if ($name != $_SESSION['admin_name'] && $name != '')
 	{
 		try
@@ -76,9 +77,11 @@ function name_modify()
 function password_modify()
 {
 	$password = $_POST['password'];
+
 	if ($password != '')
 	{
 		$password_again = $_POST['password_again'];
+
 		if ($password == $password_again)
 		{
 			query("

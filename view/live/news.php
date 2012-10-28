@@ -26,7 +26,7 @@ EOT;
 		echo <<< EOT
 		<div class="picture">
 			<a href="img/news/{$data[$i]['picture']}" target="_blank">
-				<img src="img/news/{$data[$i]['picture']}" alt="直播图片" title="{$data[$i]['news']}" height="128" />
+				<img src="img/news/{$data[$i]['picture']}" alt="直播图片" title="查看图片" height="128" />
 			</a>
 		</div>
 EOT;

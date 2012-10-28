@@ -18,11 +18,12 @@ else if (
 	isset($_POST['password_again'])
 )
 {
-	$flag = true; // 错误标志变量
+	$flag = true; // 错误标志
 	$error_msg = array(); // 错误信息列表
 
 	// 邮箱验证
 	$email = $_POST['email'];
+
 	if ($email == '')
 	{
 		array_push($error_msg, '邮箱不能为空');
@@ -30,26 +31,21 @@ else if (
 	}
 	else
 	{
-		$result = result(query("
-			SELECT id
-			FROM live_user
-			WHERE email = '{$email}'
-		"));
-
-		if (isset($result[0]))
+		if (email_exists($email))
 		{
 			array_push($error_msg, "邮箱“{$email}”已被注册");
 			$flag = false;
 		}
-		else if (false) // 验证邮箱的真实性
+		else if (false) // 验证邮箱的真实性，未实现
 		{
-			array_push($error_msg, '邮箱不存在');
+			array_push($error_msg, '请输入有效的邮箱');
 			$flag = false;
 		}
 	}
 
 	// 呢称验证
 	$name = trim($_POST['name']);
+
 	if ($name == '')
 	{
 		array_push($error_msg, '昵称不能为空');
@@ -57,22 +53,23 @@ else if (
 	}
 	else
 	{
-		if (has_name($name))
+		if (name_exists($name))
 		{
-			array_push($error_msg, '您输入的昵称已存在');
+			array_push($error_msg, "昵称“{$name}”已被使用");
 			$flag = false;
 		}
 	}
 
 	// 密码验证
 	$password = $_POST['password'];
+	$password_again = $_POST['password_again'];
+
 	if ($password == '')
 	{
 		array_push($error_msg, '密码不能为空');
 		$flag = false;
 	}
 
-	$password_again = $_POST['password_again'];
 	if ($password_again == '')
 	{
 		array_push($error_msg, '请输入确认密码');

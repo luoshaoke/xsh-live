@@ -13,6 +13,7 @@ if (admin_logined())
 
 		// 名称验证
 		$name = trim($_POST['name']);
+
 		if ($name == '')
 		{
 			array_push($error_msg, '请输入名称');
@@ -20,23 +21,23 @@ if (admin_logined())
 		}
 		else
 		{
-			if (has_name($name))
+			if (name_exists($name))
 			{
-				array_push($error_msg, '您输入的昵称已存在');
+				array_push($error_msg, "名称“{$name}”已被使用");
 				$flag = false;
 			}
 		}
 
 		// 密码验证
 		$password = $_POST['password'];
+		$password_again = $_POST['password_again'];
+
 		if ($password == '')
 		{
 			array_push($error_msg, '请输入密码');
 			$flag = false;
 		}
-	
 
-		$password_again = $_POST['password_again'];
 		if ($password_again == '')
 		{
 			array_push($error_msg, '请输入确认密码');

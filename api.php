@@ -121,11 +121,29 @@ switch ($intent)
 		break;
 	}
 
-	case 'has_name':
+	case 'name_exists':
 	{
-		if (has_name($_POST['name']))
+		if (name_exists($_GET['name']))
 		{
-			echo 'had';
+			echo '1';
+		}
+		else
+		{
+			echo '0';
+		}
+
+		break;
+	}
+
+	case 'email_exists':
+	{
+		if (email_exists($_GET['email']))
+		{
+			echo '1';
+		}
+		else
+		{
+			echo '0';
 		}
 
 		break;

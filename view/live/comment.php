@@ -16,6 +16,21 @@ echo <<< EOT
 		<p class="news">
 			<em>{$news['news']}</em>
 		</p>
+EOT;
+	
+	// 显示直播图片
+	if ($news['picture'] != '')
+	{
+		echo <<< EOT
+		<div class="picture">
+			<a href="img/news/{$news['picture']}" target="_blank">
+				<img src="img/news/{$news['picture']}" alt="直播图片" title="查看图片" height="128" />
+			</a>
+		</div>
+EOT;
+	}
+
+	echo <<< EOT
 		<div class="bottom">
 			<p>
 				<span class="time" title="{$news['time']}">{$news['ago']}</span>
@@ -52,7 +67,7 @@ echo <<< EOT
 					<textarea class="comment textedit" name="comment">{$reply}</textarea>
 				</p>
 				<div class="submit">
-					<button type="submit" class="button">发送</button>
+					<button type="submit" class="button">评论</button>
 				</div>
 		</fieldset>
 	</form>

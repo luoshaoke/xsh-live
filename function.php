@@ -61,7 +61,12 @@ function admin_logined()
 // 判断用户是否已登录
 function user_logined()
 {
-	if (isset($_SESSION['user_id']) && isset($_SESSION['user_name']))
+	if (
+		isset($_SESSION['user_id']) &&
+		isset($_SESSION['user_name']) &&
+		$_SESSION['user_name'] != '游客' &&
+		$_SESSION['user_id'] != 0
+	)
 	{
 		return true;
 	}
@@ -170,7 +175,7 @@ function set_admin_name($id, $name)
 {
 	if ($name != '')
 	{
-		if (has_name($name))
+		if (name_exists($name))
 		{
 			throw new Exception("名称“{$name}”已被使用");
 		}
@@ -524,12 +529,23 @@ function send_comment($comment, $follow)
 	}
 }
 
-function has_name($name)
+function name_exists($name)
 {
 	$result = result(query("
 		SELECT live_user.id, live_admin.id
 		FROM live_user, live_admin
 		WHERE live_user.name = '{$name}' OR live_admin.name = '{$name}'
+	"));
+
+	return isset($result[0]);
+}
+
+function email_exists($email)
+{
+	$result = result(query("
+		SELECT id
+		FROM live_user
+		WHERE live_user.email = '{$email}'
 	"));
 
 	return isset($result[0]);

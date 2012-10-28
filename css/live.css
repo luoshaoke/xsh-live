@@ -42,13 +42,23 @@ a:hover {
 #toolbar p {
 	margin: 0;
 }
+#toolbar a {
+	color: white;
+	display: block;
+}
+#toolbar a:hover {
+	text-decoration: none;
+}
 #toolbar h1.title {
 	cursor: default;
 	display: inline-block;
 	line-height: 40px;
 	font-size: 18px;
 	margin: 0;
-	padding-left: 8px;
+}
+#toolbar .title a {
+	padding: 0 8px;
+	display: block;
 }
 #toolbar .detail {
 	display: inline-block;
@@ -83,16 +93,8 @@ a.top {
 	right: 0;
 	top: 0;
 }
-#toolbar .personal {
-	cursor: pointer;
-	float: left;
-}
 #toolbar a:hover, #toolbar .personal:hover {
 	background-color: orange;
-}
-#toolbar .setting {
-	display: inline-block;
-	margin: 0;
 }
 #setting {
 	background: url('../img/setting.png') center no-repeat;
@@ -101,7 +103,7 @@ a.top {
 	width: 40px;
 	height: 40px;
 }
-#toolbar div.name {
+#toolbar span.name {
 	display: inline-block;
 	padding-right: 8px;
 	line-height: 40px;
@@ -114,34 +116,22 @@ a.top {
 	margin: 8px;
 	background: white;
 }
-#toolbar .menu {
-	position: relative;
-	height: 28px;
-	bottom: 78px;
-	display: none;
-	border-top: 2px solid darkorange;
-	border-left: 2px solid darkorange;
-	border-right: 2px solid darkorange;
-	background-color: white;
-	padding: 4px 0;
-}
-#toolbar .menu a {
-	color: black;
-	line-height: 2em;
-	display: block;
-}
-#toolbar .menu a:hover {
-	text-decoration: none;
-	background-color: silver;
-}
 
 #header {
-	margin-bottom: 20px;
-	background-color: lightgreen;
+	width: 800px;
+	padding-top: 200px;
+	background: darkorange url('../img/header_img.jpg') top center no-repeat;
 }
+#intro{
+	height: 100px;
+	color: white;
+	font-size: 16px;
+	font-family: '微软雅黑';
+}
+
 #body {
 	width: 800px;
-	margin: auto;
+	margin: 0 auto;
 }
 hr.separator, span.separator {
 	display: none;
@@ -206,7 +196,7 @@ em.operate a:hover {
 	color: darkgray;
 }
 em.operate a.share {
-	background: url('../img/share.png') left no-repeat;
+	background: url('../img/forwards.png') left no-repeat;
 }
 em.operate a.comment {
 	background: url('../img/comment.png') left no-repeat;
@@ -257,7 +247,7 @@ dt.user_avatar {
 	padding-left: 16px;
 }
 div.comment dd.content {
-	background: lightcyan;
+	background-color: lightyellow;
 	margin: 0;
 	float: left;
 	width: 612px;
@@ -274,7 +264,7 @@ span.user {
 }
 .comment_form textarea {
 	width: 672px;
-	height: 100px;
+	height: 60px;
 }
 .comment_form fieldset {
 	padding: 0;
@@ -288,7 +278,7 @@ span.user {
 }
 dl.comment {
 	clear: both;
-	padding: 20px 0;
+	padding: 10px 0;
 }
 .comment hr.separator {
 	display: block;
@@ -296,7 +286,7 @@ dl.comment {
 	border: none;
 }
 p.comment {
-	margin: 4px 0 0;
+	margin: 6px 0 0;
 	font-style: normal;
 	line-height: 1.5em;
 }
@@ -324,6 +314,9 @@ p.comment {
 .warning {
 	background: url('../img/warning.png') 4px center no-repeat darkorange;
 }
+.success {
+	background: url('../img/success.png') 4px center no-repeat yellowgreen;
+}
 .error_list {
 	background: darkorange;
 	color: white;
@@ -336,44 +329,106 @@ p.comment {
 .wrap {
 	background: white;
 }
-#login {
+#login_form {
 	width: 400px;
 }
-#login fieldset {
+#login_form fieldset {
 	padding: 20px 100px;
 }
-#login input {
+#login_form input {
 	width: 200px;
 }
-form.register {
-	width: 240px;
-	padding: 0 20px 0 60px;
-	background: white;
+#login_form p {
+	margin: 8px 0;
 }
-form.register input {
-	width: 166px;
-}
-form.register button {
+
+#register_form {
+	font-family: '微软雅黑';
 	position: relative;
-	left: -20px;
 }
-form.register span.error {
-	display: block;
-	width: 150px;
-	color: white;
-	background: url('../img/warning_min.png') left center no-repeat darkorange;
-	font-size: 12px;
-	padding: 4px 4px 4px 24px;
+#register_form fieldset {
 	margin: 0;
+	padding: 0;
 }
-form.register span.ok {
+#register_form input {
+	font-family: '微软雅黑';
+	width: 180px;
+	padding: 8px;
+}
+#register_form ol {
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+}
+#register_form label, #register_form br {
+	display: none;
+}
+#register_form ol.input {
+	width: 276px;
+	padding: 23px 0 23px 24px;
+	float: left;
+}
+#register_form .point {
 	display: inline-block;
-	width: 24px;
-	height: 24px;
-	background: url(../img/ok.png) center;
+	width: 28px;
+	height: 28px;
 	position: relative;
-	top: 6px;
+	top: 8px;
+	left: -8px;
 }
+#register_form .error {
+	background: url('../img/alert.png') center no-repeat;
+}
+#register_form .ok {
+	background: url('../img/ok.png') center no-repeat;
+}
+#register_form ol.input li {
+	text-align: center;
+}
+#register_form ol.input li.selected {
+	background: url('../img/b.jpg') right center no-repeat;
+}
+#register_form ol.direction {
+	color: white;
+	background-color: #2672EC;
+	padding: 0 20px;
+	width: 460px;
+	height: 300px;
+	float: right;
+}
+#register_form ol.direction li {
+	display: none;
+}
+#register_form ol.direction h3 {
+	border-bottom: 1px dashed;
+    font-size: 18px;
+    padding-bottom: 8px;
+}
+#register_form ol.direction p {
+	line-height: 1.5em;
+	font-size: 16px;
+}
+#register_form div.submit {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+#register_form #submit {
+	background-color: white;
+	color: black;
+}
+#register_form #submit:hover {
+	background-color: silver;
+}
+#register_form #submit:active {
+	background-color: silver;
+	color: white;
+}
+#register_form #submit.invalid {
+	background-color: gray;
+	color: white;
+}
+
 .form {
 	margin: auto;
 }
@@ -383,17 +438,25 @@ fieldset {
 legend {
 	display: none;
 }
+.without {
+	color: gray;
+	font-style: italic;
+}
 .textedit {
-	background: white;
+	background-color: white;
 	border: 2px solid #BABABA;
 	padding: 4px;
 	margin: 4px 0;
-	line-height: 1.5em;
+}
+input.textedit {
+	font-size: 16px;
+	height: 18px;
 }
 .textedit:focus {
 	border-color: black;
+	outline: none;
 }
-p.submit {
+p.submit, div.submit {
 	text-align: center;
 }
 label {
@@ -402,24 +465,26 @@ label {
 }
 textarea {
 	overflow: auto;
+	line-height: 1.5em;
 }
 .button {
 	border: none;
 	padding: 4px 16px;
 	text-align: center;
-	background: darkcyan;
+	background-color: darkcyan;
 	font-family: '微软雅黑';
 	color: white;
+	margin: 0;
 }
 button.invalid {
-	background: gray;
+	background-color: gray;
 }
-button.invalid:hover {
-	background: gray;
+button.invalid:hover, button.invalid:active {
+	background-color: gray;
 }
 .button:hover {
-	background: lightseagreen;
+	background-color: lightseagreen;
 }
 .button:active {
-	background: black;
+	background-color: black;
 }

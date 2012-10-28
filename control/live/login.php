@@ -11,7 +11,12 @@ if (user_logined())
 
 	view('message');
 }
-else if (isset($_POST['email']) && isset($_POST['password']))
+else if (
+	isset($_POST['email']) &&
+	isset($_POST['password']) &&
+	$_POST['email'] != '' &&
+	$_POST['password'] != ''
+)
 {
 	$email = $_POST['email'];
 	$password = $_POST['password'];
@@ -25,7 +30,7 @@ else if (isset($_POST['email']) && isset($_POST['password']))
 
 	if (!isset($result[0]))
 	{
-		$warning = '邮箱不存在';
+		$warning = "邮箱“{$email}”不存在";
 		view('warning');
 	}
 	else if ($result[0]['password'] != $password)
