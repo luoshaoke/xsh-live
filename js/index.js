@@ -10,6 +10,7 @@ $('#toolbar .center').append(
 
 // 控制按钮，上下翻页，回到首页
 (function(){
+
 	// 按钮点击事件
 	$('#btn_down').click(function(){
 		goto_news('down');
@@ -24,31 +25,57 @@ $('#toolbar .center').append(
 		return false;
 	});
 
+	// 两次移动重叠发生时
+	var num; // 上次的位置
+	var move_timeout = null; // 是否在移动,null表示不在移动
+	var dir; // 移动的方向
+
 	// 跳转新闻
 	function goto_news(arg)
 	{
-		$body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
+		// 兼容获得body
+		var $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
 		var scrollTop = $(window).scrollTop();
+		// 动画参数
 		options = {
-			duration: 'slow',
+			duration: 3000,
 			easing: 'easeOutExpo',
 			queue: false
 		};
+
 		var i = 0;
+
+		// 表示 计算目前所在第几个新闻时 的 允许偏移
 		var diff = 20;
-		for (; i < $('#body > .news').length; i++)
+
+		if (move_timeout == null || arg != dir)
 		{
-			var i_top = $("#body > .news:eq(" + i + ")").offset().top;
-			if (i_top - scrollTop >= diff) {
-				if (arg != 'up') i--;
-				break;
+			// i = 目前所在新闻序号
+			for (; i < $('#body > .news').length; i++)
+			{
+				var i_top = $("#body > .news:eq(" + i + ")").offset().top;
+				if (i_top - scrollTop >= diff) {
+					if (arg != 'up') i--;
+					break;
+				}
+				if (i_top - scrollTop < diff && i_top - scrollTop > - diff) break;
 			}
-			if (i_top - scrollTop < diff && i_top - scrollTop > - diff) break;
 		}
+		else {
+			// 两次移动重叠发生时
+			if (arg == 'up') i = --num;
+			else if (arg == "down") i = ++num;
+		}
+
+		// 记录上次的移动
+		dir = arg;
+		num = i;
+
+		// i = 要跳到新闻的offset().top
 		switch (arg)
 		{
 			case 'up': 
-				i = (i == 0) ? 0 : $("#body > .news:eq(" + (i - 1) + ")").offset().top;
+				i = (i <= 0) ? 0 : $("#body > .news:eq(" + (i - 1) + ")").offset().top;
 				break;
 			case 'down':
 				i = $("#body > .news:eq(" + (i + 1) + ")").offset().top;
@@ -60,6 +87,15 @@ $('#toolbar .center').append(
 				i = $(document).height();
 				break;
 		}
+
+		// 回调函数
+		clearTimeout(move_timeout);
+		move_timeout = setTimeout(function(){
+			move_timeout = null;
+		}, options.duration);
+
+		// 执行动画
+		$body.stop(); 
 		$body.animate({scrollTop: i}, options);
 	}
 })();
