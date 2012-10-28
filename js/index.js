@@ -45,11 +45,10 @@ $('#toolbar .center').append(
 			}
 			if (i_top - scrollTop < diff && i_top - scrollTop > - diff) break;
 		}
-		if (i == -1) i = 0;
 		switch (arg)
 		{
 			case 'up': 
-				i = (i == 0 || i == 1) ? 0 : $("#body > .news:eq(" + (i - 1) + ")").offset().top;
+				i = (i == 0) ? 0 : $("#body > .news:eq(" + (i - 1) + ")").offset().top;
 				break;
 			case 'down':
 				i = $("#body > .news:eq(" + (i + 1) + ")").offset().top;
