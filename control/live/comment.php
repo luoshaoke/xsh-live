@@ -6,7 +6,7 @@ if (isset($_POST['comment']))
 {
 	try
 	{
-		send_comment($_POST['comment'], $follow);
+		send_comment(trim($_POST['comment']), $follow);
 		$message = '评论成功';
 		view('message');
 	}
