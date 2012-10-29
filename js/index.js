@@ -36,17 +36,41 @@ $('#toolbar .center').append(
 				return false;
 		}
 	});
+	if (document.addEventListener) {
+		document.addEventListener('DOMMouseScroll', function(event) {
+			if (move_timeout != null)
+			{
+				$body.stop();
+				clearTimeout(move_timeout);
+				move_timeout = null;
+				event.stopPropagation();
+				event.preventDefault();
+			}
+		}, false);
+	} 
+	document.onmousewheel = function(event) {
+		event = event || window.event;
+		if (move_timeout != null)
+		{
+			$body.stop();
+			clearTimeout(move_timeout);
+			move_timeout = null;
+			event.returnValue = false; 
+		}
+		else
+			event.returnValue = true; 
+	};
 
 	// 两次移动重叠发生时
 	var num; // 上次的位置
 	var move_timeout = null; // 是否在移动,null表示不在移动
 	var dir; // 移动的方向
+	// 兼容获得body
+	var $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
 
 	// 跳转新闻
 	function goto_news(arg)
 	{
-		// 兼容获得body
-		var $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
 		var scrollTop = $(window).scrollTop();
 		// 动画参数
 		options = {
