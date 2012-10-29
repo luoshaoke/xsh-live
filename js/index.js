@@ -37,6 +37,24 @@ $('#toolbar .center').append(
 		}
 	});
 
+	/* 鼠标滚动事件
+	 * Firefox使用DOMMouseScroll，其他的浏览器使用mousewheel。
+	 * 滚动事件触发时Firefox使用detail属性捕捉滚轮信息，其他的浏览器使用wheelDelta。
+	 * Firefox可以使用addEventListener方法绑定DomMouseScroll事件。 
+	 * */
+	if (document.addEventListener) {
+		document.addEventListener('DOMMouseScroll', function(event) {
+			(event.detail < 0) ? $('#btn_up').click() : $('#btn_down').click();
+			event.stopPropagation();
+			// event.preventDefault();
+		}, false);
+	} 
+	document.onmousewheel = function(event) {
+		event = event || window.event;
+		(event.wheelDelta > 0) ? $('#btn_up').click() : $('#btn_down').click();
+		event.returnValue = false; 
+	};
+
 	// 两次移动重叠发生时
 	var num; // 上次的位置
 	var move_timeout = null; // 是否在移动,null表示不在移动
@@ -50,22 +68,24 @@ $('#toolbar .center').append(
 		var scrollTop = $(window).scrollTop();
 		// 动画参数
 		options = {
-			duration: 3000,
+			duration: 2500,
 			easing: 'easeOutExpo',
 			queue: false
 		};
 
 		var i = 0;
 
-		// 表示 计算目前所在第几个新闻时 的 允许偏移
+		// 表示 计算目前所在第几个新闻时 的 允许误差
 		var diff = 20;
+		// 移动到的位置偏移
+		var move_offset = -10;
 
 		if (move_timeout == null || arg != dir)
 		{
 			// i = 目前所在新闻序号
 			for (; i < $('#body > .news').length; i++)
 			{
-				var i_top = $("#body > .news:eq(" + i + ")").offset().top;
+				var i_top = $("#body > .news:eq(" + i + ")").offset().top + move_offset;
 				if (i_top - scrollTop >= diff) {
 					if (arg != 'up') i--;
 					break;
@@ -110,7 +130,7 @@ $('#toolbar .center').append(
 		}, options.duration);
 
 		// 执行动画
-		$body.animate({scrollTop: i}, options);
+		$body.animate({scrollTop: i + move_offset}, options);
 	}
 })();
 
