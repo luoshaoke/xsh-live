@@ -62,7 +62,7 @@ $('#toolbar .center').append(
 			}
 		}
 		else {
-			// 两次移动重叠发生时
+			// 两次移动重叠发生时， i = 上次移动的位置增1
 			if (arg == 'up') i = --num;
 			else if (arg == "down") i = ++num;
 		}
@@ -71,7 +71,7 @@ $('#toolbar .center').append(
 		dir = arg;
 		num = i;
 
-		// i = 要跳到新闻的offset().top
+		// i = 第 i 条新闻的 offset().top
 		switch (arg)
 		{
 			case 'up': 
