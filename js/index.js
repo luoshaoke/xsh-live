@@ -37,24 +37,6 @@ $('#toolbar .center').append(
 		}
 	});
 
-	/* 鼠标滚动事件
-	 * Firefox使用DOMMouseScroll，其他的浏览器使用mousewheel。
-	 * 滚动事件触发时Firefox使用detail属性捕捉滚轮信息，其他的浏览器使用wheelDelta。
-	 * Firefox可以使用addEventListener方法绑定DomMouseScroll事件。 
-	 * */
-	if (document.addEventListener) {
-		document.addEventListener('DOMMouseScroll', function(event) {
-			(event.detail < 0) ? $('#btn_up').click() : $('#btn_down').click();
-			event.stopPropagation();
-			// event.preventDefault();
-		}, false);
-	} 
-	document.onmousewheel = function(event) {
-		event = event || window.event;
-		(event.wheelDelta > 0) ? $('#btn_up').click() : $('#btn_down').click();
-		event.returnValue = false; 
-	};
-
 	// 两次移动重叠发生时
 	var num; // 上次的位置
 	var move_timeout = null; // 是否在移动,null表示不在移动
