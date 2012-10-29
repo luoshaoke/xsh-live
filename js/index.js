@@ -24,6 +24,18 @@ $('#toolbar .center').append(
 		goto_news('top');
 		return false;
 	});
+	// 左右方向键上下翻页
+	$(document).keydown(function(event){
+		switch(event.keyCode)
+		{
+			case 37: 
+				$('#btn_up').click();
+				return false;
+			case 39:
+				$('#btn_down').click();
+				return false;
+		}
+	});
 
 	// 两次移动重叠发生时
 	var num; // 上次的位置
@@ -88,14 +100,16 @@ $('#toolbar .center').append(
 				break;
 		}
 
+		if (move_timeout != null) {
+			clearTimeout(move_timeout);
+			$body.stop();
+		}
 		// 回调函数
-		clearTimeout(move_timeout);
 		move_timeout = setTimeout(function(){
 			move_timeout = null;
 		}, options.duration);
 
 		// 执行动画
-		$body.stop(); 
 		$body.animate({scrollTop: i}, options);
 	}
 })();
