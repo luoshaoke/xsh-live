@@ -116,11 +116,38 @@ a.top {
 	margin: 8px;
 	background: white;
 }
+#toolbar .xsh {
+	display: inline-block;
+	height: 40px;
+	float: left;
+}
+#toolbar .xsh img {
+	display: block;
+}
+#toolbar .xsh span {
+	display: none;
+}
 
 #header {
 	width: 800px;
 	padding-top: 200px;
 	background: darkorange url('../img/header_img.jpg') top center no-repeat;
+}
+#sidebar {
+	position: fixed;
+	right: 0;
+	cursor: pointer;
+	bottom: -463px;
+	/*
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=270, Color='silver');
+	box-shadow: -2px 0 2px silver;
+	*/
+}
+#sina {
+	margin: 0;
+	padding: 10px 8px 8px 36px;
+	color: white;
+	background: url('../img/weibo.png') 8px center no-repeat #0078B6;
 }
 #intro{
 	height: 100px;

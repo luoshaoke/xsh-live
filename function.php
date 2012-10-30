@@ -114,7 +114,7 @@ function img_upload($img, $img_name, $dir)
 // 发布新闻
 function add_news()
 {
-	$news = $_POST['news'];
+	$news = trim($_POST['news']);
 
 	if ($news == '')
 	{
@@ -412,6 +412,7 @@ function get_live_news($start, $length)
 		}
 
 		$data[$i]['ago'] = ago($data[$i]['time']);
+		$data[$i]['news'] = html($data[$i]['news']);
 	}
 
 	return $data;

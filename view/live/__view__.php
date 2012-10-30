@@ -14,6 +14,12 @@
 	<body>
 		<div id="toolbar">
 			<div class="left">
+				<div class="xsh" title="相思湖网站">
+					<a href="http://xsh.gxun.edu.cn" target="_blank">
+						<img src="img/xsh-logo.png" alt="相思湖网站 Logo" />
+						<span>相思湖网站</span>
+					</a>
+				</div>
 				<h1 class="title"><a href="?intent=live" title="相思湖网站图文直播">图文直播</a></h1>
 				<div class="detail"></div>
 			</div>

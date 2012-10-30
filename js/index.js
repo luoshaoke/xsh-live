@@ -5,7 +5,7 @@ $('#toolbar .center').append(
 		'<a href="#" class="up" id="btn_up" title="上一条">上一条</a>' +
 		'<a href="#" class="top" id="btn_top" title="返回顶部">返回顶部</a>' +
 		'<a href="#" class="down" id="btn_down" title="下一条">下一条</a>' +
-	'</p>'
+		'</p>'
 ).css('display', 'inline-block');
 
 // 控制按钮，上下翻页，回到首页
@@ -28,7 +28,7 @@ $('#toolbar .center').append(
 	$(document).keydown(function(event){
 		switch(event.keyCode)
 		{
-			case 37: 
+			case 37:
 				$('#btn_up').click();
 				return false;
 			case 39:
@@ -47,7 +47,7 @@ $('#toolbar .center').append(
 				event.preventDefault();
 			}
 		}, false);
-	} 
+	}
 	document.onmousewheel = function(event) {
 		event = event || window.event;
 		if (move_timeout != null)
@@ -55,10 +55,10 @@ $('#toolbar .center').append(
 			$body.stop();
 			clearTimeout(move_timeout);
 			move_timeout = null;
-			event.returnValue = false; 
+			event.returnValue = false;
 		}
 		else
-			event.returnValue = true; 
+			event.returnValue = true;
 	};
 
 	// 两次移动重叠发生时
@@ -74,7 +74,7 @@ $('#toolbar .center').append(
 		var scrollTop = $(window).scrollTop();
 		// 动画参数
 		options = {
-			duration: 2500,
+			duration: 1000,
 			easing: 'easeOutExpo',
 			queue: false
 		};
@@ -112,7 +112,7 @@ $('#toolbar .center').append(
 		// i = 第 i 条新闻的 offset().top
 		switch (arg)
 		{
-			case 'up': 
+			case 'up':
 				i = (i <= 0) ? 0 : $("#body > .news:eq(" + (i - 1) + ")").offset().top;
 				break;
 			case 'down':
@@ -138,6 +138,17 @@ $('#toolbar .center').append(
 		// 执行动画
 		$body.animate({scrollTop: i + move_offset}, options);
 	}
+})();
+
+(function(){
+	var options = {duration: 'slow', easing: 'easeOutExpo', queue: false};
+	$sidebar = $('#sidebar');
+
+	$('#sina').toggle(function(){
+		$sidebar.animate({bottom: '28px'}, options);
+	}, function(){
+		$sidebar.animate({bottom: '-463px'}, options);
+	});
 })();
 
 });

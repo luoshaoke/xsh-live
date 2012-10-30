@@ -73,6 +73,11 @@ if (admin_logined())
 			LIMIT {$start}, {$length}
 		"));
 
+		for ($i = 0, $size = count($news); $i < $size; $i++)
+		{
+			$news[$i]['news'] = html($news[$i]['news']);
+		}
+
 		view('modify');
 	}
 }
