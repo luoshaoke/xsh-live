@@ -6,7 +6,7 @@ if (user_logined())
 		switch ($_GET['operate'])
 		{
 			case 'email':
-				$email = filter($_POST['email']);
+				$email = $_POST['email'];
 				if ($email != '')
 				{
 					$warning = '邮箱不能为空';
@@ -38,7 +38,7 @@ if (user_logined())
 				break;
 
 			case 'name':
-				$name = filter($_POST['name']);
+				$name = $_POST['name'];
 				if ($name != $_SESSION['user_name'])
 				{
 					if ($name == '')
@@ -112,7 +112,7 @@ if (user_logined())
 
 			case 'password':
 				$password_primitive = $_POST['password_primitive'];
-				$password = filter($_POST['password']);
+				$password = $_POST['password'];
 
 				if ($password_primitive != '' && $password != '')
 				{
@@ -123,7 +123,7 @@ if (user_logined())
 					"));
 					if ($result[0]['password'] == $password_primitive)
 					{
-						$password_again = filter($_POST['password_again']);
+						$password_again = $_POST['password_again'];
 						if ($password == $password_again)
 						{
 							query("
